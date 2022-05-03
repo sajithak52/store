@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'Righteous';
+  src: url('../fonts/Righteous-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'jose-bold';
+  src: url('../fonts/JosefinSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'jose-light';
+  src: url('../fonts/JosefinSans-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'jose-regular';
+  src: url('../fonts/JosefinSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'jose-thin';
+  src: url('../fonts/JosefinSans-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'jose-semibold';
+  src: url('../fonts/JosefinSans-SemiBold.ttf') format('truetype');
+}
+
+.righteous {
+  font-family: Righteous, sans-serif, Arial;
+}
+
+.jose-bold {
+  font-family: jose-bold, sans-serif, Arial;
+}
+
+.jose-light {
+  font-family: jose-light, sans-serif, Arial;
+}
+
+.jose-regular {
+  font-family: jose-regular, sans-serif, Arial;
+}
+
+.jose-thin {
+  font-family: jose-thin, sans-serif, Arial;
+}
+
+.jose-semibold {
+  font-family: jose-semibold, sans-serif, Arial;
+}
