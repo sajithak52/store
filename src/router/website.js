@@ -3,7 +3,7 @@ const Layout = () => import('@/layout/CustomerDashboard');
 export default {
     path      : '/',
     name      : 'DashboardLayout',
-    redirect  : '/home/',
+    redirect  : '/products/',
     component : Layout,
     children  : [
         {

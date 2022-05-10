@@ -7,9 +7,6 @@
                 <b-collapse id="nav-collapse" class="flex-grow-0" is-nav>
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <router-link class="nav-link" to="/">Home</router-link>
-                        </li>
-                        <li class="nav-item">
                             <router-link class="nav-link" to="/products/">Products</router-link>
                         </li>
                         <li class="nav-item">
