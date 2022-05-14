@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MY STORE</title>
+
+    <link rel="stylesheet" href="addminlogin.css">
+
+
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+
+                <a href="index.html.html"> <img src="images2/logo.png" width="125px"></a>
+            </div>
+            <nav>
+                <ul>
+
+                    <li><a href="index.html.html">HOME</a></li>
+                    <li><a href="available%20products.html.html">AVAILABLE PRODUCT</a></li>
+                    <li><a href="addmin login.html">ADMIN LOGIN</a></li>
+                    <li><a href="">ABOUT</a></li>
+                    <li><a href="contact%20us.html">CONTACT US</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="account.page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-container">
+                            <div class="form-btn">
+                                <span onclick="login()">Login</span>
+                                <span onclick="register()">Register</span>
+                                <hr id="indicator">
+                            </div>
+
+                            <form id="LoginForm">
+                                <input type="text" placeholder="Usrename">
+                                <input type="Password" placeholder="Password">
+                                <button type="submit" class="btn">Login</button>
+                                <a href="">Forgot password</a>
+                            </form>
+
+                            <form id="RegForm">
+                                <input type="text" placeholder="Usrename">
+                                <input type="email" placeholder="email">
+                                <input type="password" placeholder="password">
+                                <button type="submit" class="btn">Register</button>
+                            </form>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-------java script for toggle form----->
+        <script>
+            var LoginForm = document.getElementById("LoginForm");
+            var RegForm = document.getElementById("RegForm");
+            var indicator = document.getElementById("indicator");
+
+            function register() {
+                RegForm.style.transform = "translate(0px)";
+                LoginForm.style.transform = "translate(0px)";
+                indicator.style.transform = "translate(100px)";
+            }
+
+            function login() {
+                RegForm.style.transform = "translate(300px)";
+                LoginForm.style.transform = "translate(300px)";
+                indicator.style.transform = "translate(0px)";
+            }
+
+        </script>
+    </div>
+</div>
+
+
+</body>
+</html>

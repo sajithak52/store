@@ -16,6 +16,15 @@ import './assets/css/font.css';
 import './assets/css/components.css';
 import './assets/css/style.css';
 
+// import './assets/css/about.css';
+// import './assets/css/addminlogin.css';
+// import './assets/css/components.css';
+// import './assets/css/student.css';
+// import './assets/css/style.css';
+// import './assets/css/style11.css';
+// import './assets/css/style12.css';
+// import './assets/css/style13.css';
+
 Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
