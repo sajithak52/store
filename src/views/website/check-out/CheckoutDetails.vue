@@ -184,7 +184,4 @@ export default {
 </script>
 
 <style scoped>
-.container {
-    padding: 4% !important;
-}
 </style>

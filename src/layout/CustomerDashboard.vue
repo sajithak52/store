@@ -22,5 +22,7 @@ export default {
 </script>
 
 <style scoped>
-
+.modal-body {
+    padding-top: 0;
+}
 </style>
