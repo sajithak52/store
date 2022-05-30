@@ -1,80 +1,78 @@
 <template>
-    <div>
-        <section class="header-mt">
-            <div class="container py-5">
-                <div class="text-center">
-                    <p class="text-default xeo-heading-2 mb-5">Products</p>
+    <section>
+        <div class="container py-5">
+            <div class="text-center">
+                <p class="text-default xeo-heading-2 mb-5">Products</p>
+            </div>
+
+            <div class="row filter-section align-items-md-start">
+
+                <div class="col-md-3 position-md-sticky top-pos">
+                    <div class="filters">
+                        <div class="d-flex justify-content-between border-bottom pb-3 mb-3">
+                            <p class="m-0">Categories</p>
+                        </div>
+
+                        <ul class="list-unstyled">
+                            <li class="filter" v-bind:class="{ active: currentFilter === 'ALL' }"
+                                v-on:click="setFilter('ALL')">all
+                            </li>
+                            <li class="filter" v-for="(category, index) in categories" v-bind:key="index"
+                                :class="{ active: currentFilter === category }"
+                                @click="setFilter(category)">
+                                {{ category.name }}
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="row filter-section align-items-md-start">
+                <div class="col-md-9">
 
-                    <div class="col-md-3 position-md-sticky top-pos">
-                        <div class="filters">
-                            <div class="d-flex justify-content-between border-bottom pb-3 mb-3">
-                                <p class="m-0">Categories</p>
-                            </div>
+                    <transition-group tag="div" class="projects row" name="list-complete">
 
-                            <ul class="list-unstyled">
-                                <li class="filter" v-bind:class="{ active: currentFilter === 'ALL' }"
-                                    v-on:click="setFilter('ALL')">all
-                                </li>
-                                <li class="filter" v-for="(category, index) in categories" v-bind:key="index"
-                                    :class="{ active: currentFilter === category }"
-                                    @click="setFilter(category)">
-                                    {{ category.name }}
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                        <div class="project col-md-3 col-6 mb-3" v-for="offer in filteredItems"
+                             v-bind:key="offer.name">
+                            <a>
+                                <div class="project-image-wrapper">
+                                    <div class="position-relative">
+                                        <img class="project-image" v-bind:src="offer.image" alt="">
 
-                    <div class="col-md-9">
-
-                        <transition-group tag="div" class="projects row" name="list-complete">
-
-                            <div class="project col-md-3 col-6 mb-3" v-for="offer in filteredItems"
-                                 v-bind:key="offer.name">
-                                <a>
-                                    <div class="project-image-wrapper">
-                                        <div class="position-relative">
-                                            <img class="project-image" v-bind:src="offer.image" alt="">
-
-                                            <div class="gradient-overlay">
-                                                <div>
-                                                    <a v-if="showMinus(offer)" @click="decrement(offer)" class="mr-2">
-                                                        <b-icon icon="dash" font-scale="1.6"></b-icon>
-                                                    </a>
-                                                    <loading-animation v-if="offer.loading_minus" />
-                                                </div>
-
-                                                <p class="m-0 p-1" v-if="offer.quantity > 0"
-                                                   v-html="offer.quantity"></p>
-
-                                                <div>
-                                                    <a v-if="!offer.loading_plus" @click="increment(offer)" class="ml-2">
-                                                        <b-icon icon="plus" font-scale="1.6"></b-icon>
-                                                    </a>
-                                                    <loading-animation v-else />
-                                                </div>
+                                        <div class="gradient-overlay">
+                                            <div>
+                                                <a v-if="showMinus(offer)" @click="decrement(offer)" class="mr-2">
+                                                    <b-icon icon="dash" font-scale="1.6"></b-icon>
+                                                </a>
+                                                <loading-animation v-if="offer.loading_minus"/>
                                             </div>
 
-                                        </div>
-                                        <div class="project-title">{{ offer.name }}</div>
-                                        <div class="item-price">
-                                            <currency-view class="item-price" :value="offer.selling_price" />
+                                            <p class="m-0 p-1" v-if="offer.quantity > 0"
+                                               v-html="offer.quantity"></p>
+
+                                            <div>
+                                                <a v-if="!offer.loading_plus" @click="increment(offer)" class="ml-2">
+                                                    <b-icon icon="plus" font-scale="1.6"></b-icon>
+                                                </a>
+                                                <loading-animation v-else/>
+                                            </div>
                                         </div>
 
                                     </div>
-                                </a>
-                            </div>
+                                    <div class="project-title">{{ offer.name }}</div>
+                                    <div class="item-price">
+                                        <currency-view class="item-price" :value="offer.selling_price"/>
+                                    </div>
 
-                        </transition-group>
+                                </div>
+                            </a>
+                        </div>
 
-                    </div>
+                    </transition-group>
 
                 </div>
+
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -149,7 +147,7 @@ export default {
             this.currentFilter = filter;
         },
 
-        showMinus (model) {
+        showMinus(model) {
             if (model.quantity > 0) {
                 return !model.loading_minus;
             } else {
@@ -157,7 +155,7 @@ export default {
             }
         },
 
-        decrement (item) {
+        decrement(item) {
             const that = this;
             item.loading_minus = true;
 
@@ -168,7 +166,7 @@ export default {
                     solid   : true
                 });
                 item.loading_minus = false;
-                return ;
+                return;
             }
 
             const model = {

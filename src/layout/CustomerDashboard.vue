@@ -2,7 +2,7 @@
     <div class="wrapper">
         <div class="main-content d-flex flex-column min-vh-100">
             <CustomerDashboardNavBar></CustomerDashboardNavBar>
-            <div>
+            <div class="header-mt">
                 <router-view></router-view>
             </div>
         </div>

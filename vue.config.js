@@ -14,8 +14,8 @@ module.exports = defineConfig({
     pages : {
         index : {
             entry    : 'src/main.js',
-            template : 'public/index.new-html',
-            filename : 'index.new-html',
+            template : 'public/index.html',
+            filename : 'index.html',
             title    : 'Store Management'
         }
     },

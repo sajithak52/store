@@ -3,14 +3,9 @@ const Layout = () => import('@/layout/CustomerDashboard');
 export default {
     path      : '/',
     name      : 'DashboardLayout',
-    redirect  : '/products/',
+    redirect  : '/home/',
     component : Layout,
     children  : [
-        {
-            path      : '/home/',
-            name      : 'Home',
-            component : () => import('@/views/HomeView.vue')
-        },
         {
             path      : '/about/',
             name      : 'about',

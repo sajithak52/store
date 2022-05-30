@@ -1,6 +1,7 @@
 <template>
     <div>
         <Header :not-found="true" />
+
         <div class="align-items-center d-flex header-mt justify-content-center login-bg mb-5">
 
             <div id="sub-page" class="mt-5 mb-5">
