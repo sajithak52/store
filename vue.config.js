@@ -3,8 +3,7 @@ const path = require('path');
 
 let publicPath;
 if (IN_PRODUCTION) {
-    // publicPath = '/asset-inventory';
-    publicPath = '/it-asset-inventory';
+    publicPath = '/store';
 } else {
     publicPath = '/';
 }
