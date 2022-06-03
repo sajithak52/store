@@ -61,6 +61,7 @@
                     <div class="text-default mb-5" style="margin-top: 120px">
                         <h1> WELCOME TO MY STORE </h1>
                         <p>HI ALL,<br>THIS SITE HELP YOU TO BOOK PRODUCTS FROM THE STORE.</p>
+                        <p v-if="!isOpen" class="alert alert-danger">THE STORE IS CLOSED.</p>
                         <a @click="$router.push({path: '/products/'})" class="hero-btn">GET PRODUCTS</a>
                     </div>
                 </div>
@@ -73,8 +74,35 @@
 
 <script>
 
+import axios from "@/data/axios";
+import urls from "@/data/urls";
+
 export default {
-    name : 'HomeView'
+    name : 'HomeView',
+
+    data () {
+        return {
+            isOpen : true
+        };
+    },
+
+    mounted() {
+        this.loadData();
+    },
+
+    methods : {
+        loadData () {
+            const that = this;
+
+            axios.get(urls.shop.checkOpenForUser).then(function (response) {
+                const json = response.data;
+                that.isOpen = json.is_open;
+            }).catch(function (exception) {
+                console.log("exception : ", exception);
+                that.isOpen = false;
+            });
+        },
+    }
 };
 </script>
 

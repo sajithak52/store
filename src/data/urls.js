@@ -3,6 +3,7 @@ const baseUrl = '/';
 const subBaseUrl = 'store-management/';
 const authBaseUrl = 'auth/';
 const cartBaseUrl = 'cart/';
+const shopBaseUrl = 'shop/';
 
 export default {
     baseUrl,
@@ -12,6 +13,12 @@ export default {
         login          : baseUrl + authBaseUrl + 'login/',
         logout         : baseUrl + authBaseUrl + 'logout/',
         changePassword : baseUrl + authBaseUrl + 'change-password//',
+    },
+
+    shop : {
+        openStore        : baseUrl + shopBaseUrl + 'open-store/',
+        checkOpen        : baseUrl + shopBaseUrl + 'check-open-store/',
+        checkOpenForUser : baseUrl + shopBaseUrl + 'check-open-store-user/'
     },
 
     admin : {

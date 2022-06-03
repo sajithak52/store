@@ -2,6 +2,20 @@
     <section class="header-mt">
         <div class="container py-5">
             <p class="xeo-heading-2 text-default text-center mb-5">PURCHASE ENTRY</p>
+
+            <div class="alert alert-info clearfix">
+                <div class="float-left">
+                    <span v-if="model.is_open">Your store is Open</span>
+                    <span v-else>Your store is not open please use the button to open store..!!</span>
+                </div>
+                <div class="float-right">
+                    <b-form-checkbox v-model="model.is_open" name="check-button" switch @change="openStore">
+                        <b>(Switch Shop: <span v-if="model.is_open">Close</span>
+                    <span v-else>Open</span>)</b>
+                    </b-form-checkbox>
+                </div>
+            </div>
+
             <b-card class="business-tab">
 
                 <b-row>
@@ -17,10 +31,13 @@
 
                                     <b-input-group-append>
                                         <b-button type="submit" variant="success">
-                                            <b-icon icon="search" font-scale="0.9"></b-icon> Search
+                                            <b-icon icon="search" font-scale="0.9"></b-icon>
+                                            Search
                                         </b-button>
-                                        <b-button type="button" variant="warning" :disabled="!booking" @click="clearAll">
-                                            <b-icon icon="x" font-scale="1"></b-icon> Clear
+                                        <b-button type="button" variant="warning" :disabled="!booking"
+                                                  @click="clearAll">
+                                            <b-icon icon="x" font-scale="1"></b-icon>
+                                            Clear
                                         </b-button>
                                     </b-input-group-append>
 
@@ -124,13 +141,35 @@ export default {
             error   : false,
 
             updating  : false,
-            exception : false
+            exception : false,
+
+            model : {
+                is_open : false
+            }
         };
     },
 
-    methods : {
+    mounted() {
+        this.loadData();
+    },
 
-        clearAll () {
+    methods : {
+        loadData () {
+            const that = this;
+
+            axios.get(urls.shop.checkOpen).then(function (response) {
+                const json = response.data;
+                that.model = {...json.data};
+            }).catch(function (exception) {
+                console.log("exception : ", exception);
+                const model = {
+                    is_open : false
+                };
+                that.model = {...model};
+            });
+        },
+
+        clearAll() {
             this.booking = '';
             this.details = null;
         },
@@ -176,7 +215,7 @@ export default {
             });
         },
 
-        updatePurchase () {
+        updatePurchase() {
             const that = this;
 
             that.updating = true;
@@ -220,6 +259,35 @@ export default {
 
         reloadFn() {
             window.location.reload();
+        },
+
+        openStore () {
+            const that = this;
+
+            axios.form(urls.shop.openStore, that.model).then(function (response) {
+                const json = response.data;
+                if (json.error === false) {
+                    that.$bvToast.toast('Successfully Update the store..!!', {
+                        title   : `Success`,
+                        variant : 'success',
+                        solid   : true
+                    });
+                    // that.model = {...json.data};
+                } else {
+                    that.$bvToast.toast(json.message, {
+                        title   : `Warning`,
+                        variant : 'danger',
+                        solid   : true
+                    });
+                }
+            }).catch(function (exception) {
+                console.log('exception occurred at open store the details...', exception);
+                that.$bvToast.toast('Something went wrong..!!', {
+                    title   : `Warning`,
+                    variant : 'danger',
+                    solid   : true
+                });
+            });
         }
     }
 };
