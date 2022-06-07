@@ -76,9 +76,9 @@
                                             <th style="width:30%" class="cart-img">
                                                 <span class=""> {{ item.item_name }}</span>
                                             </th>
-                                            <th style="width:18%" class="">₹{{ item.unit_price }}</th>
+                                            <th style="width:18%" class=""><currency-view :value="item.unit_price" /></th>
                                             <th style="width:18%" class="">{{ item.quantity }}</th>
-                                            <th style="width:18%" class="text-right">₹{{ item.total_price }}</th>
+                                            <th style="width:18%" class="text-right"><currency-view :value="item.total_price" /></th>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -86,9 +86,9 @@
                                     <div v-if="details" class=" col-md-12  c-margin-t-10 c-padding-m-10 c-font-right ">
                                         <p class=" c-font-16 c-margin-b-0 mn-color-1">
                                             SUBTOTAL
-                                            <span class="c-font-22 c-margin-t-0 bold mn-color-4 jose-semibold"> ₹{{
-                                                    details.total_price
-                                                }}</span>
+                                            <span class="c-font-22 c-margin-t-0 bold mn-color-4 jose-semibold">
+                                                <currency-view :value="details.total_price" />
+                                            </span>
                                         </p>
                                     </div>
                                 </div>
