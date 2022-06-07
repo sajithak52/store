@@ -6,11 +6,16 @@
 
                 <div class="text-grey-2 px-lg-5">
                     <div class="c-font-16 c-margin-0">
-                        <p>We are CHM students of GPC Chelakkara.</p>
+                        <p>We are CHM students of GPC Chelakkara,<br>We create this website for managing college store functionality more efficently.</p>
 
                         The Members are:<br>
 
-                        1. Sajitha
+                        1. Sajitha<br>
+                        2. Ajmal<br>
+                        3. sharuk<br>
+                        4. Faris<br>
+                        5. Praveen<br>
+
 
                     </div>
                     <hr>
