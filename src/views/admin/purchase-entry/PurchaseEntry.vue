@@ -54,7 +54,8 @@
                         <div v-if="loading" class="alert alert-primary" v-html="'Loading...'"></div>
 
                         <div v-else-if="error" class="alert alert-danger"
-                             v-html="'Failed to fetch data from the server.'"></div>
+                             v-html="errorMessage"></div>
+<!--                             v-html="'Failed to fetch data from the server.'"></div>-->
 
                         <div v-else>
 
@@ -143,6 +144,8 @@ export default {
             updating  : false,
             exception : false,
 
+            errorMessage : '',
+
             model : {
                 is_open : false
             }
@@ -200,6 +203,7 @@ export default {
                         variant : 'danger',
                         solid   : true
                     });
+                    that.errorMessage = json.message;
                     that.loading = false;
                     that.error = true;
                 }
